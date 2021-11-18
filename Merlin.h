@@ -1,8 +1,8 @@
 #ifndef MERLIN_H
 #define MERLIN_H
 
-#include "RochetComponent.h"
-class Merlin : public RochetComponent
+#include "RocketComponent.h"
+class Merlin : public RocketComponent
 {
 private:
 	int Fuel;

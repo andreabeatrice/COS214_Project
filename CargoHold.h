@@ -2,8 +2,8 @@
 #define CARGOHOLD_H
 
 #include "Cargo.h"
-#include "Rochet.h"
-class CargoHold : public Rochet
+#include "Rocket.h"
+class CargoHold : public Rocket
 {
 private:
 	Cargo* _Cargo;

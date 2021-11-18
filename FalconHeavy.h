@@ -1,11 +1,11 @@
 #ifndef FALCONHEAVY_H
 #define FALCONHEAVY_H
 
-#include "RochetComponent.h"
-class FalconHeavy : public RochetComponent
+#include "RocketComponent.h"
+class FalconHeavy : public RocketComponent
 {
 private:
-	//MerlinRochet** engines;
+	//MerlinRocket** engines;
 };
 
 #endif
