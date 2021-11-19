@@ -1,8 +1,7 @@
 #include "Satellite.h"
 
-Satellite::Satellite(int w)
+Satellite::Satellite(int w) : Cargo(w)
 {
-    weight = w;
 }
 
 Cargo* Satellite::clone()

@@ -41,7 +41,7 @@ void StorageFacade::addPart(Cargo* s)
 
 list<Rocket*> StorageFacade::getComponents(string s)
 {
-    Warehouse->getComponents(s);
+    return Warehouse->getComponents(s);
 }
 
 list<list<Rocket*>> StorageFacade::getAllComponents()
@@ -68,15 +68,29 @@ void StorageFacade::printAvailableParts()
     printHelper("VM");
     printHelper("EL");
     printHelper("AO");
+    printHelper("SAT");
 }
 
 void StorageFacade::printHelper(string s)
 {
-    list<Rocket*> l = getComponents(s);
-    cout<<"Code: "<<s<<endl;
-    for (Rocket* r : l)
+    if (s=="SAT")
     {
-        cout<<r->getHealth()<<endl;
+        list<Cargo*> l = Warehouse->getSatellites();
+        if (l.size()==0)
+            return;
+        cout<<"Code: "<<s<<endl;
+        for (Cargo* r : l)
+            cout<<"weight: "<<r->weight<<endl;
     }
+    else
+    {
+        list<Rocket*> l = getComponents(s);
+        if (l.size()==0)
+            return;
+        cout<<"Code: "<<s<<endl;
+        for (Rocket* r : l)
+            cout<<"HP: "<<r->getHealth()<<endl;
+    }
+    
     
 }

@@ -10,3 +10,9 @@ Rocket* RocketBody::clone(int h)
     r->setHealth(h);
     return r;
 }
+
+
+string RocketBody::getBodyType()
+{
+    return typeOfBody;
+}

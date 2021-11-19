@@ -64,6 +64,7 @@ void Storage::addPart(RocketBody* r)
 
 void Storage::addPart(Engine* e)
 {
+    string s = e->getEngineType();
     if (e->getEngineType()=="M")
         M.push_back(e->getHealth());
     else
@@ -95,7 +96,7 @@ list<Rocket*> Storage::getComponents(string s)
         }
     else
     if (s=="FH")
-        while (F9.size()>0)
+        while (FH.size()>0)
         {
             Rocket* r = Falcon9Copy->clone(FH.front());
             FH.pop_front();
@@ -111,7 +112,7 @@ list<Rocket*> Storage::getComponents(string s)
         }
     else
     if (s=="VM")
-        while (F9.size()>0)
+        while (MV.size()>0)
         {
             Rocket* r = MerlinVacuumCopy->clone(MV.front());
             MV.pop_front();

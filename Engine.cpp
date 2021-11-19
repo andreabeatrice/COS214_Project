@@ -10,3 +10,8 @@ Rocket* Engine::clone(int h)
     r->setHealth(h);
     return r;
 }
+
+string Engine::getEngineType()
+{
+    return typeOfEngine;
+}

@@ -1,8 +1,8 @@
-main.o :
-	g++ -c *.cpp
-
 main : main.o
 	g++ *.o -o main
+
+main.o :
+	g++ -c *.cpp
 
 run : main
 	./main
