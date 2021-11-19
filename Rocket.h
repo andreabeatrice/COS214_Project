@@ -1,5 +1,5 @@
-#ifndef ROCKETLAUNCHER_H
-#define ROCKETLAUNCHER_H
+#ifndef ROCKET_H
+#define ROCKET_H
 
 #include <iostream>
 #include <string>
@@ -7,9 +7,8 @@
 using namespace std;
 
 //Receiver class
-class RocketLauncher {
+class Rocket {
 	public:
-		RocketLauncher();
 		//Function to simulate real launch
 		void RealCountdown();
 		//Function to simulate test launch
