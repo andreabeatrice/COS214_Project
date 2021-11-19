@@ -9,7 +9,8 @@ using namespace std;
 class Aero : public RocketComponent, public Prototype
 {
 public:
-	Rocket* clone(int);
+	Aero();
+	virtual Rocket* clone(int);
 };
 
 #endif

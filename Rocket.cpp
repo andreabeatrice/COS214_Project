@@ -1,20 +1,16 @@
 #include "Rocket.h"
 
-Rocket::Rocket()
-{
-}
-
 int Rocket::getCost()
 {
-	return cost;
+	return rocketCost;
 }
 
 int Rocket::getHealth()
 {
-	return health;
+	return rocketHealth;
 }
 
 void Rocket::setHealth(int h)
 {
-	health = h;
+	rocketHealth = h;
 }

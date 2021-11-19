@@ -2,11 +2,12 @@
 #define ENGINE_H
 
 #include "RocketComponent.h"
+#include "Prototype.h"
 #include "string"
 
 using namespace std;
 
-class Engine : public RocketComponent
+class Engine : public RocketComponent, public Prototype
 {
 private:
 	string typeOfEngine;

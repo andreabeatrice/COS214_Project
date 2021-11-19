@@ -2,49 +2,58 @@
 
 Storage::Storage()
 {
-    RocketBody = new list<Rocket*>;
-    Engine = new list<Rocket*>;
-    Aero = new list<Rocket*>;
-    Spacecraft = new list<Rocket*>;
-    Electronic = new list<Rocket*>;
+    AeroCopy = new Aero();
+    Falcon9Copy = new RocketBody("Falcon9");
+    FalconHCopy = new RocketBody("Falcon Heavy");
+    MerlinCopy = new Engine("Merlin");
+    MerlinVacuumCopy = new Engine("Merlin Vacuum");
+    ElectronicCopy = new Electronic();
+    SatelliteCopy = new Cargo(260);
 }
 
-void Storage::addPart(string s)
+void Storage::addPart()
 {
-    Rocket* r;
-    if (s=="Body")
-    {
-        
-    }
+    cout<<"What should be added?"<<endl;
+    cout<<"F9 = Falcon9"<<endl;
+    cout<<"FH = Falcon Heavy"<<endl;
+    cout<<"M = Merlin Engine"<<endl;
+    cout<<"VM = Vacuum Merlin"<<endl;
+    cout<<"El = Electronics"<<endl;
+    cout<<"SAT = Satellite"<<endl;
+    string s;
+    cin>>s;
+    if (s=="F9")
+        F9.push_back(100);
     else
-    if (s=="Engine")
-    {
-        
-    }
+    if (s=="FH")
+        FH.push_back(100);
     else
-    if (s=="Aero")
-    {
-        
-    }
+    if (s=="M")
+        M.push_back(100);
     else
-    if (s=="SC")
-    {
-        
-    }
+    if (s=="VM")
+        MV.push_back(100);
     else
-    if (s=="Elec")
+    if (s=="EL")
+        Elec.push_back(100);
+    else
+    if (s=="SAT")
+        SL.push_back(260);
+    else
     {
-        
+        cout<<"Enter a valid code"<<endl;
+        addPart();
     }
-    
     
 }
 
 Storage::~Storage()
 {
-    delete RocketBody;
-    delete Engine;
-    delete Aero;
-    delete Spacecraft;
-    delete Electronic;
+    delete AeroCopy;
+    delete Falcon9Copy;
+    delete FalconHCopy;
+    delete MerlinCopy;
+    delete MerlinVacuumCopy;
+    delete ElectronicCopy;
+    delete SatelliteCopy;
 }

@@ -2,12 +2,12 @@
 
 RocketComponent::RocketComponent()
 {
-	Part = nullptr;
+	Part = 0;
 }
 
 void RocketComponent::add(Rocket* p)
 {
-	if(p==nullptr)
+	if(p==0)
 	{
 		Part = p;
 	}

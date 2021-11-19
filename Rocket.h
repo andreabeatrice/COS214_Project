@@ -7,7 +7,7 @@ private:
 	int rocketHealth;
 	int rocketCost;
 public:
-	Rocket();
+	Rocket(){};
 	int getCost();
 	int getHealth();
 	void setHealth(int);

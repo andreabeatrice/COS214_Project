@@ -1,8 +1,13 @@
 #include "Aero.h"
 
-Rocket* clone(int h)
+Aero::Aero()
 {
-    Rocket* r = new Aero();
-    r->setHealth(h);
-    return r;
+
+}
+
+Rocket* Aero::clone(int h)
+{
+    //Rocket r;
+    //r->setHealth(h);
+    //return r;
 }

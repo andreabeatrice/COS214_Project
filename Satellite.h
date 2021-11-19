@@ -4,7 +4,6 @@
 #include "Cargo.h"
 class Satellite : public Cargo
 {
-
 };
 
 #endif

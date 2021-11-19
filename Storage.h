@@ -3,22 +3,38 @@
 
 #include<list>
 #include"string"
-#include"Rocket.h"
+#include<iostream>
+#include"Aero.h"
+#include"RocketBody.h"
+#include"Engine.h"
+#include"Electronic.h"
+#include"Spacecraft.h"
+#include"Satellite.h"
 
 using namespace std;  
 
 class Storage
 {
 private:
-    list<Rocket*>* RocketBody;
-    list<Rocket*>* Engine;
-    list<Rocket*>* Aero;
-    list<Rocket*>* Spacecraft;
-    list<Rocket*>* Electronic;
+    list<int> AO;
+    Aero* AeroCopy;
+    list<int> F9;
+    RocketBody* Falcon9Copy;
+    list<int> FH;
+    RocketBody* FalconHCopy;
+    list<int> M;
+    Engine* MerlinCopy;
+    list<int> MV;
+    Engine* MerlinVacuumCopy;
+    list<int> Elec;
+    Electronic* ElectronicCopy;
+    list<int> SL;
+    Cargo* SatelliteCopy;
 public:
     Storage();
     ~Storage();
-    void addPart(string);
+    void addPart();
+    void addPart(Rocket*);
 };
 
 

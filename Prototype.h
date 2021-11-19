@@ -5,14 +5,9 @@
 
 class Prototype
 {
-private:
 public:
-    Prototype();
+    Prototype(){};
     virtual Rocket* clone(int)=0;
 };
-
-Prototype::Prototype()
-{
-}
 
 #endif
