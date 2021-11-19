@@ -5,7 +5,9 @@ class Cargo
 {
 public:
 	int weight;
-	Cargo(int w) { weight = w; };
+	Cargo();
+	Cargo(int);
+	virtual Cargo* clone(int);
 };
 
 #endif

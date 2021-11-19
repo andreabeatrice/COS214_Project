@@ -11,8 +11,7 @@
 #include"Spacecraft.h"
 #include"Satellite.h"
 
-using namespace std;  
-
+using namespace std;
 class Storage
 {
 private:
@@ -34,7 +33,13 @@ public:
     Storage();
     ~Storage();
     void addPart();
-    void addPart(Rocket*);
+    void addPart(Aero*);
+    void addPart(RocketBody*);
+    void addPart(Engine*);
+    void addPart(Electronic*);
+    void addPart(Cargo*);
+    list<Rocket*> getComponents(string);
+    list<Cargo*> getSatellites();
 };
 
 
