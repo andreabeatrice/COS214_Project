@@ -59,3 +59,24 @@ list<Cargo*> StorageFacade::getSatellites()
 {
     return Warehouse->getSatellites();
 }
+
+void StorageFacade::printAvailableParts()
+{
+    printHelper("F9");
+    printHelper("FH");
+    printHelper("M");
+    printHelper("VM");
+    printHelper("EL");
+    printHelper("AO");
+}
+
+void StorageFacade::printHelper(string s)
+{
+    list<Rocket*> l = getComponents(s);
+    cout<<"Code: "<<s<<endl;
+    for (Rocket* r : l)
+    {
+        cout<<r->getHealth()<<endl;
+    }
+    
+}

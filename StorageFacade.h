@@ -4,6 +4,7 @@
 #include "Storage.h"
 #include "list"
 #include "Rocket.h"
+#include <algorithm>
 
 using namespace std;
 class StorageFacade
@@ -22,6 +23,8 @@ public:
     list<Rocket*> getComponents(string);
     list<list<Rocket*>> getAllComponents();
     list<Cargo*> getSatellites();
+    void printAvailableParts();
+    void printHelper(string);
 };
 
 #endif
