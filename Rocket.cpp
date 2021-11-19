@@ -1,9 +1,6 @@
-#include "RocketLauncher.h"
+#include "Rocket.h"
 
-RocketLauncher::RocketLauncher()
-{}
-
-void RocketLauncher::RealCountdown()
+void Rocket::RealCountdown()
 {
 	//This function would actually launch the rocket 
 	//Below are some statements that could be shown at various stages.
@@ -26,7 +23,7 @@ void RocketLauncher::RealCountdown()
 	cout<<"Rocket failed to reach its destination."<<endl;
 }
 
-void RocketLauncher::TestCountdown()
+void Rocket::TestCountdown()
 {
 	string answer = "";
 	//This function would test launch the rocket 
