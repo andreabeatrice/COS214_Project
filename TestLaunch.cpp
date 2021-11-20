@@ -1,6 +1,6 @@
 #include "TestLaunch.h"
 
-TestLaunch::TestLaunch(RocketLauncher* r)
+TestLaunch::TestLaunch(Rocket* r)
 {
 	this->rocket = r;
 }
