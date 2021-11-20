@@ -1,6 +1,6 @@
 #include "RealLaunch.h"
 
-RealLaunch::RealLaunch(RocketLauncher* r)
+RealLaunch::RealLaunch(Rocket* r)
 {
 	this->rocket = r;
 }
