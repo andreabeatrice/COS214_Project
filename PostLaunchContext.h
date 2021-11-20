@@ -3,7 +3,8 @@
 
 #include <string>
 #include "PostLaunchStrategy.h"
-
+#include "SuccessfulRocketStrategy.h"
+#include "FailedRocketStrategy.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ public:
 
 	PostLaunchContext(PostLaunchStrategy* _strategy);
 	
-	string launchCost();
+	void launchCost();
 
 	void setLaunchStrategy(PostLaunchStrategy* _strategy);
 

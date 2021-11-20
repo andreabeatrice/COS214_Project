@@ -2,21 +2,23 @@
 #include <iostream>
 
 #include "PostLaunchStrategy.h"
+#include "SuccessfulRocketStrategy.h"
+#include "FailedRocketStrategy.h"
 #include "PostLaunchContext.h"
 
 using namespace std;
 
 PostLaunchContext::PostLaunchContext(){
-	
+	//strategy = new SuccessfulRocketStrategy();
 }
 
 PostLaunchContext::PostLaunchContext(PostLaunchStrategy* _strategy){
-	strategy = _playstyle;
+	strategy = _strategy;
 }
 
-string PostLaunchContext::launchCost(){
+void PostLaunchContext::launchCost(){
 
-	/*cout<<name<<*/strategy->launchCost();
+	cout<<strategy->launchCost()<<endl;
 }
 
 void PostLaunchContext::setLaunchStrategy(PostLaunchStrategy* _strategy){

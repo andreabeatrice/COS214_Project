@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class SuccessfulRocketStrategy : PostLaunchStrategy{
+class SuccessfulRocketStrategy : public PostLaunchStrategy{
 
 public:
 	SuccessfulRocketStrategy();
