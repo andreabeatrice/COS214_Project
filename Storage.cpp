@@ -20,6 +20,7 @@ void Storage::addPart()
     cout<<"VM = Vacuum Merlin"<<endl;
     cout<<"El = Electronics"<<endl;
     cout<<"SAT = Satellite"<<endl;
+    cout<<"AO = Aero"<<endl;
     string s;
     cin>>s;
     if (s=="F9")
@@ -39,6 +40,9 @@ void Storage::addPart()
     else
     if (s=="SAT")
         SL.push_back(260);
+    else
+    if (s=="AO")
+        AO.push_back(100);
     else
     {
         cout<<"Enter a valid code"<<endl;
@@ -124,6 +128,14 @@ list<Rocket*> Storage::getComponents(string s)
         {
             Rocket* r = ElectronicCopy->clone(Elec.front());
             Elec.pop_front();
+            n.push_back(r);
+        }
+    else
+    if (s=="AO")
+        while (AO.size()>0)
+        {
+            Rocket* r = AeroCopy->clone(AO.front());
+            AO.pop_front();
             n.push_back(r);
         }
     return n;

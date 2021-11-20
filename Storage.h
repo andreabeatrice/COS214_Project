@@ -40,6 +40,13 @@ public:
     void addPart(Cargo*);
     list<Rocket*> getComponents(string);
     list<Cargo*> getSatellites();
+    void RemoveF9(int);
+    void RemoveFH(int);
+    void RemoveM(int);
+    void RemoveVM(int);
+    void RemoveEL(int);
+    void RemoveSAT(int);
+    void RemoveAO(int);
 };
 
 

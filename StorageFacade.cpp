@@ -94,3 +94,30 @@ void StorageFacade::printHelper(string s)
     
     
 }
+
+void StorageFacade::deleteComponent(string s,int i)
+{
+    if (s=="F9")
+        Warehouse->RemoveF9(i);
+    else
+    if (s=="FH")
+        Warehouse->RemoveFH(i);
+    else
+    if (s=="M")
+        Warehouse->RemoveM(i);
+    else
+    if (s=="VM")
+        Warehouse->RemoveVM(i);
+    else
+    if (s=="EL")
+        Warehouse->RemoveEL(i);
+    else
+    if (s=="SAT")
+        Warehouse->RemoveSAT(i);
+    else
+    if (s=="AO")
+        Warehouse->RemoveAO(i);
+    else
+        cout<<"Enter a valid code"<<endl;
+    
+}
