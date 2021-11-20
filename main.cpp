@@ -14,10 +14,10 @@ int main()
     cout<<"PP"<<endl;
     WarehouseControl.deleteComponent("SAT",260);
     cout<<"PD"<<endl;
-    /*WarehouseControl.deleteComponent("FH",100);
+    WarehouseControl.deleteComponent("FH",100);
     cout<<"PD"<<endl;
     WarehouseControl.deleteComponent("M",100);
-    cout<<"PD"<<endl;*/
+    cout<<"PD"<<endl;
     WarehouseControl.printAvailableParts();
     cout<<"PP"<<endl;
     return 0;
