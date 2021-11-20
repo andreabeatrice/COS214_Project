@@ -10,12 +10,19 @@ using namespace std;
 
 class RocketIterator : public Iterator
 {
+private:
+	vector<Rocket*> rocketList;
+	int index = 0;
 
 public:
+	RocketIterator();
+	RocketIterator(vector<Rocket*> rl);
 	Rocket* first();
 	Rocket* next();
-	Rocket* isDone();
+	Rocket* previous();
 	Rocket* current();
+	Rocket* last();
+	bool isDone();
 };
 
 #endif

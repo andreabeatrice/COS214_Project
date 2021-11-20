@@ -15,8 +15,9 @@ private:
 	vector<Rocket*> rocketList;
 
 public:
-	virtual Iterator* createIterator();
-	virtual void addRocket(Rocket* r);
+	virtual Iterator* createIterator() = 0;
+	virtual void addRocket(Rocket* r) = 0;
+	virtual vector<Rocket*> getRocketList() = 0;
 };
 
 #endif

@@ -15,8 +15,10 @@ private:
 	vector<Rocket*> rocketList;
 
 public:
+	RocketContainer();
 	Iterator* createIterator();
 	void addRocket(Rocket* r);
+	vector<Rocket*> getRocketList();
 };
 
 #endif
