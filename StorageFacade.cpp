@@ -62,37 +62,13 @@ list<Cargo*> StorageFacade::getSatellites()
 
 void StorageFacade::printAvailableParts()
 {
-    printHelper("F9");
-    printHelper("FH");
-    printHelper("M");
-    printHelper("VM");
-    printHelper("EL");
-    printHelper("AO");
-    printHelper("SAT");
-}
-
-void StorageFacade::printHelper(string s)
-{
-    if (s=="SAT")
-    {
-        list<Cargo*> l = Warehouse->getSatellites();
-        if (l.size()==0)
-            return;
-        cout<<"Code: "<<s<<endl;
-        for (Cargo* r : l)
-            cout<<"weight: "<<r->weight<<endl;
-    }
-    else
-    {
-        list<Rocket*> l = getComponents(s);
-        if (l.size()==0)
-            return;
-        cout<<"Code: "<<s<<endl;
-        for (Rocket* r : l)
-            cout<<"HP: "<<r->getHealth()<<endl;
-    }
-    
-    
+    Warehouse->printHelper("F9");
+    Warehouse->printHelper("FH");
+    Warehouse->printHelper("M");
+    Warehouse->printHelper("VM");
+    Warehouse->printHelper("EL");
+    Warehouse->printHelper("AO");
+    Warehouse->printHelper("SAT");
 }
 
 void StorageFacade::deleteComponent(string s,int i)

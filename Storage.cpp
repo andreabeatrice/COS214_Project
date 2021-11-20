@@ -215,12 +215,11 @@ void Storage::RemoveEL(int i)
 
 void Storage::RemoveSAT(int i)
 {
-    list<int>::iterator it = SL.begin();
-    while (*it!=i)
-    {
-        advance(it,1);
-    }
-    SL.erase(it);    
+    list<int>::iterator findIter = find(SL.begin(), SL.end(), i);
+        if (findIter!=SL.end())
+        {
+            SL.erase(findIter);
+        }
 }
 
 void Storage::RemoveAO(int i)
@@ -231,4 +230,85 @@ void Storage::RemoveAO(int i)
         advance(it,1);
     }
     AO.erase(it);    
+}
+
+void Storage::printHelper(string s)
+{
+    if (s=="SAT")
+    {
+        if (SL.size()==0)
+            return;
+        cout<<"Code: "<<s<<endl;
+        for (int r : SL)
+        {
+            cout<<"weight: "<<r<<endl;
+        }
+        return;
+    }
+    if (s=="F9")
+    {
+        if (F9.size()==0)
+            return;
+        cout<<"Code: "<<s<<endl;
+        for (int r : F9)
+        {
+            cout<<" HP: "<<r<<endl;
+        }
+        return;
+    }
+    if (s=="FH")
+    {
+        if (FH.size()==0)
+            return;
+        cout<<"Code: "<<s<<endl;
+        for (int r : FH)
+        {
+            cout<<"HP: "<<r<<endl;
+        }
+        return;
+    }
+    if (s=="AO")
+    {
+        if (AO.size()==0)
+            return;
+        cout<<"Code: "<<s<<endl;
+        for (int r : AO)
+        {
+            cout<<"HP: "<<r<<endl;
+        }
+        return;
+    }
+    if (s=="EL")
+    {
+        if (Elec.size()==0)
+            return;
+        cout<<"Code: "<<s<<endl;
+        for (int r : Elec)
+        {
+            cout<<"HP: "<<r<<endl;
+        }
+        return;
+    }
+    if (s=="M")
+    {
+        if (M.size()==0)
+            return;
+        cout<<"Code: "<<s<<endl;
+        for (int r : M)
+        {
+            cout<<"HP: "<<r<<endl;
+        }
+        return;
+    }
+    if (s=="VM")
+    {
+        if (MV.size()==0)
+            return;
+        cout<<"Code: "<<s<<endl;
+        for (int r : MV)
+        {
+            cout<<"HP: "<<r<<endl;
+        }
+        return;
+    }
 }

@@ -24,7 +24,6 @@ public:
     list<list<Rocket*>> getAllComponents(); //Satellites are not of type rocket. and technically not components so they are stored
     list<Cargo*> getSatellites();           //differently
     void printAvailableParts();
-    void printHelper(string);
     void deleteComponent(string,int);       //imput the code of the component and its health if it has one or it's weight if it's a Satellite
 };
 

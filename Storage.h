@@ -2,6 +2,7 @@
 #define STORAGE_H
 
 #include<list>
+#include<algorithm>
 #include"string"
 #include<iostream>
 #include"Aero.h"
@@ -47,6 +48,7 @@ public:
     void RemoveEL(int);
     void RemoveSAT(int);
     void RemoveAO(int);
+    void printHelper(string);
 };
 
 
