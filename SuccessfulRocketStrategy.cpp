@@ -2,6 +2,8 @@
 #include <iostream>
 #include "PostLaunchStrategy.h"
 #include "SuccessfulRocketStrategy.h"
+//#include "Caretaker.h"
+//#include "Storage.h"
 
 using namespace std;
 
@@ -10,6 +12,22 @@ SuccessfulRocketStrategy::SuccessfulRocketStrategy(){
 }
 
 string SuccessfulRocketStrategy::launchCost(){
+    
+    int lc = 0;
+
+    /*
+        foreach (rocket in container){
+            //get memento of rockets & get price
+            lc = lc + this->getCaretaker()->getMemento->getCost();
+
+            if (this->getCaretaker()->getMemento->getHealth() <= 0){
+                //rocket can't be resued; discard
+            }
+            else {
+                //return rocket to storage
+            }
+        }
+    */
 
 	//Cost of each components that cannot be reused + cost of fuel + cost of launchpad + cost of repairs to reusable pieces
 
@@ -30,7 +48,7 @@ string SuccessfulRocketStrategy::launchCost(){
 
     //LOX costs in the region of $0.20/kg, so (using the $200k figure above) RP-1 would then be $1,20/kg. 
 
+    string returnStr =  "This launch cost $" + to_string(lc);
 
-
-	return "This test run cost ";
+	return returnStr;
 }
