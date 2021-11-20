@@ -162,3 +162,73 @@ Storage::~Storage()
     delete ElectronicCopy;
     delete SatelliteCopy;
 }
+
+void Storage::RemoveF9(int i)
+{
+    list<int>::iterator it = F9.begin();
+    while (*it!=i)
+    {
+        advance(it,1);
+    }
+    F9.erase(it);    
+}
+
+void Storage::RemoveFH(int i)
+{
+    list<int>::iterator it = FH.begin();
+    while (*it!=i)
+    {
+        advance(it,1);
+    }
+    FH.erase(it);    
+}
+
+void Storage::RemoveM(int i)
+{
+    list<int>::iterator it = M.begin();
+    while (*it!=i)
+    {
+        advance(it,1);
+    }
+    M.erase(it);    
+}
+
+void Storage::RemoveVM(int i)
+{
+    list<int>::iterator it = MV.begin();
+    while (*it!=i)
+    {
+        advance(it,1);
+    }
+    MV.erase(it);    
+}
+
+void Storage::RemoveEL(int i)
+{
+    list<int>::iterator it = Elec.begin();
+    while (*it!=i)
+    {
+        advance(it,1);
+    }
+    Elec.erase(it);    
+}
+
+void Storage::RemoveSAT(int i)
+{
+    list<int>::iterator it = SL.begin();
+    while (*it!=i)
+    {
+        advance(it,1);
+    }
+    SL.erase(it);    
+}
+
+void Storage::RemoveAO(int i)
+{
+    list<int>::iterator it = AO.begin();
+    while (*it!=i)
+    {
+        advance(it,1);
+    }
+    AO.erase(it);    
+}
