@@ -93,7 +93,9 @@ int main(){
 
     }*/
 
-    RocketContainer* launchList = new RocketContainer[2];
+    //Rocket Iterator
+
+    /*RocketContainer* launchList = new RocketContainer[2];
     launchList->addRocket(storage[0]);
     launchList->addRocket(storage[1]);
     
@@ -104,7 +106,7 @@ int main(){
     while(iter->hasNext()){
         cout<<0;
         iter->Next();
-    }
+    }*/
    
 
 

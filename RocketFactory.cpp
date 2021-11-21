@@ -290,6 +290,10 @@ Rocket_Decorator* ViableRocket::getRocketComponents(){
     return this->myRocket;
 }
 
+void ViableRocket::Countdown(){
+
+}
+
 ///////////////////////////
 
 TestRocket::TestRocket(Rocket_Decorator* inRocket, int count){
@@ -305,6 +309,10 @@ int TestRocket::getCount(){
 
 Rocket_Decorator* TestRocket::getRocketComponents(){
     return this->myRocket;
+}
+
+void TestRocket::Countdown(){
+    
 }
 
 

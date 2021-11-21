@@ -43,6 +43,7 @@ class BaseRocket{
         BaseRocket();
         virtual int getCount() = 0;
         virtual Rocket_Decorator* getRocketComponents() = 0;
+        virtual void Countdown() = 0;
 
 };
 
@@ -55,6 +56,7 @@ class ViableRocket : public BaseRocket{
         ViableRocket(Rocket_Decorator* inRocket, int count);
         virtual int getCount();
         Rocket_Decorator* getRocketComponents();
+        virtual void Countdown();
 
 };
 
@@ -67,6 +69,7 @@ class TestRocket : public BaseRocket{
         TestRocket(Rocket_Decorator* inRocket, int count);
         virtual int getCount();
         Rocket_Decorator* getRocketComponents();
+        virtual void Countdown();
 
 };
 
