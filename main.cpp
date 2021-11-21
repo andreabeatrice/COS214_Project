@@ -5,6 +5,10 @@
 #include "RocketContainer.h"
 #include "RocketIterator.h"
 
+#include "RealLaunch.h"
+#include "TestLaunch.h"
+#include "CommandRoom.h"
+
 int main(){
 
     //Storage Test
@@ -107,6 +111,14 @@ int main(){
         cout<<0;
         iter->Next();
     }*/
+
+    RealLaunch* rLaunch = new RealLaunch(storage[0]);
+
+    CommandRoom* rCommand = new CommandRoom(rLaunch);
+
+    rCommand->blastOff();
+
+
    
 
 

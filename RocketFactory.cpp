@@ -291,6 +291,7 @@ Rocket_Decorator* ViableRocket::getRocketComponents(){
 }
 
 void ViableRocket::Countdown(){
+    cout<<"Real Launch \n";
 
 }
 
@@ -312,7 +313,7 @@ Rocket_Decorator* TestRocket::getRocketComponents(){
 }
 
 void TestRocket::Countdown(){
-    
+    cout<<"Test Launch\n";
 }
 
 
