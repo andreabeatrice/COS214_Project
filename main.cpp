@@ -2,6 +2,8 @@
 #include "Rocket.h"
 #include "RocketFactory.h"
 #include "StorageFacade.h"
+#include "RocketContainer.h"
+#include "RocketIterator.h"
 
 int main(){
 
@@ -34,7 +36,6 @@ int main(){
 
 
 
-
     /*//Decorator Test
 
     Rocket_Decorator* myRocket;
@@ -62,35 +63,49 @@ int main(){
 
     StorageFacade* RocketFactoryFacade = new StorageFacade(RocketStorage);
 
-    CreateRocket* factory[2];
+    CreateRocket* factory[1];
 
     factory[0] = new CreateViableRocket(RocketFactoryFacade);
 
-    factory[1] = new CreateTestRocket();
+    //factory[1] = new CreateTestRocket();
 
     BaseRocket* storage[2];
 
     //storage[0] = factory[0]->produce();
-    storage[1] = factory[1]->produce();
+    storage[0] = factory[0]->produce();
+    storage[1] = factory[0]->produce();
 
 
     //Printing Rocket created by Factory
 
-    Rocket_Decorator* myRock = storage[1]->getRocketComponents();
+    /*Rocket_Decorator* myRock = storage[0]->getRocketComponents();
 
-    Rocket_Decorator** rocketComponentArray = new Rocket_Decorator*[storage[1]->getCount()];
+    Rocket_Decorator** rocketComponentArray = new Rocket_Decorator*[storage[0]->getCount()];
 
 
     int i = 0;
 
     myRock->setRocketArr(rocketComponentArray, i);
 
-    for(int i=0; i< storage[1]->getCount();i++){
+    for(int i=0; i< storage[0]->getCount();i++){
 
         cout<<rocketComponentArray[i]->getName()<<"\t"<<rocketComponentArray[i]->getHealth()<<"\n";
 
+    }*/
+
+    RocketContainer* launchList = new RocketContainer[2];
+    launchList->addRocket(storage[0]);
+    launchList->addRocket(storage[1]);
+    
+    int in = 0;
+
+    RocketIterator* iter = launchList->getIterator();
+
+    while(iter->hasNext()){
+        cout<<0;
+        iter->Next();
     }
-    //storage[1] = factory[1]->produce();
+   
 
 
 
