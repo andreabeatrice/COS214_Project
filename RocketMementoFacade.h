@@ -5,7 +5,7 @@
 class RocketMemento;
 #include "Rocket.h"
 class Rocket;
-#include "Originator.h"
+//#include "Originator.h"
 class Originator;
 
 
