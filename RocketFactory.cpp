@@ -121,21 +121,22 @@ BaseRocket* CreateViableRocket::produceProduct(){
     myRocket = new Aero_Decorator(aeroC[0]->getName(),aeroC[0]->getHealth());
     myRocket->add(new RocketBody_Decorator(bodyC[0]->getName(),bodyC[0]->getHealth()));
     myRocket->add(new Electronic_Decorator(electricC[0]->getName(), electricC[0]->getHealth()));
-    myRocket->add(new Spacecraft_Decorator(cargoC[0]->getName(), cargoC[0]->getHealth()));
 
     //cout<<"\n"<<MerlinC[0]->getName()<<"\t"<<MerlinC[0]->getHealth()<<"\n";
 
-    /*for(int i=0; i< nOfMerlin; i++){
+    for(int i=0; i< nOfMerlin; i++){
         myRocket->add(new Engine_Decorator(MerlinC[i]->getName(),MerlinC[i]->getHealth()));
-    }*/
-    myRocket->add(new Engine_Decorator(MerlinC[0]->getName(),MerlinC[0]->getHealth()));
+    }
+    
 
-    /*for(int i=0; i< nOfFCore; i++){
+    for(int i=0; i< nOfFCore; i++){
         myRocket->add(new Engine_Decorator(FalconCoresC[i]->getName(),FalconCoresC[i]->getHealth()));
-    }*/
+    }
 
-    //int count = nOfFCore + nOfMerlin + 4;
-    int count = 5;
+    myRocket->add(new Spacecraft_Decorator(cargoC[0]->getName(), cargoC[0]->getHealth()));
+
+    int count = nOfFCore + nOfMerlin + 4;
+    
 
     return new ViableRocket(myRocket, count);
 

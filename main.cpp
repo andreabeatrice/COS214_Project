@@ -26,7 +26,7 @@ int main(){
     //RocketStorage->printStorage();
 
     //RocketStorage->deleteComponent("Falcon 9 Core","Engine", 84);
-    RocketStorage->deleteComponent("Merlin", "Engine", 65);
+    //RocketStorage->deleteComponent("Merlin", "Engine", 65);
 
     //cout<<"\n";
 
@@ -78,6 +78,7 @@ int main(){
     Rocket_Decorator* myRock = storage[0]->getRocketComponents();
 
     Rocket_Decorator** rocketComponentArray = new Rocket_Decorator*[storage[0]->getCount()];
+
 
     int i = 0;
 
