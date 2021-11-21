@@ -70,21 +70,22 @@ int main(){
 
     BaseRocket* storage[2];
 
-    storage[0] = factory[0]->produce();
+    //storage[0] = factory[0]->produce();
+    storage[1] = factory[1]->produce();
 
 
     //Printing Rocket created by Factory
 
-    Rocket_Decorator* myRock = storage[0]->getRocketComponents();
+    Rocket_Decorator* myRock = storage[1]->getRocketComponents();
 
-    Rocket_Decorator** rocketComponentArray = new Rocket_Decorator*[storage[0]->getCount()];
+    Rocket_Decorator** rocketComponentArray = new Rocket_Decorator*[storage[1]->getCount()];
 
 
     int i = 0;
 
     myRock->setRocketArr(rocketComponentArray, i);
 
-    for(int i=0; i< storage[0]->getCount();i++){
+    for(int i=0; i< storage[1]->getCount();i++){
 
         cout<<rocketComponentArray[i]->getName()<<"\t"<<rocketComponentArray[i]->getHealth()<<"\n";
 

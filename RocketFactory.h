@@ -64,6 +64,7 @@ class TestRocket : public BaseRocket{
         int noOfComponents;
 
     public:
+        TestRocket(Rocket_Decorator* inRocket, int count);
         virtual int getCount();
         Rocket_Decorator* getRocketComponents();
 
