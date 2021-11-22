@@ -271,7 +271,10 @@ BaseRocket* CreateTestRocket::produceProduct(){
 
 ///////////////////////////
 
-BaseRocket::BaseRocket(){}
+BaseRocket::BaseRocket(){
+
+    this->stateContext = true;
+}
 
 void BaseRocket::attachObserver(RocketObserver* observer){
 
@@ -283,6 +286,17 @@ void BaseRocket::notifyObserver(){
     
     this->observer->update();
 
+}
+
+void BaseRocket::setState(bool state){
+
+    this->stateContext = state;
+
+}
+
+bool BaseRocket::getState(){
+
+    return this->stateContext;
 }
 
 

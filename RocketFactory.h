@@ -42,6 +42,7 @@ class BaseRocket{
     protected:
         int state;
         RocketObserver* observer;
+        bool stateContext;
 
     public:
         BaseRocket();
@@ -54,6 +55,9 @@ class BaseRocket{
 
         void attachObserver(RocketObserver* observer);
         void notifyObserver();
+        
+        void setState(bool state);
+        bool getState();
 
 };
 
