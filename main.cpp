@@ -12,11 +12,22 @@
 #include "Caretaker.h"
 #include "RocketObserver.h"
 
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+//^^For the sleep function
+#include <cstdlib>
+//To generate random number
+
+
+
 int main(){
 
     //Storage Test
 
-    Storage* RocketStorage = new Storage();
+    /*Storage* RocketStorage = new Storage();
 
     RocketStorage->addRocketComponent("Falcon 9", "Rocket Body", 53);
     RocketStorage->addRocketComponent("Falcon 9 Core", "Engine", 84);
@@ -68,7 +79,7 @@ int main(){
 
     //Using Storage Facade for the rocket factory
 
-    StorageFacade* RocketFactoryFacade = new StorageFacade(RocketStorage);
+    /*StorageFacade* RocketFactoryFacade = new StorageFacade(RocketStorage);
 
     CreateRocket* factory[1];
 
@@ -126,14 +137,157 @@ int main(){
     //Memento
 
 
-    Caretaker* rCaretaker = new Caretaker();
+    /*Caretaker* rCaretaker = new Caretaker();
 
     rCaretaker->setMemento(storage[0]->createMemento());
 
     //Observer
 
     RocketObserver* nObserver = new RocketObserver(storage[0]);
-    storage[0]->notifyObserver();
+    storage[0]->notifyObserver();*/
+
+    //Setup basic storage
+
+    Storage* RocketStorage = new Storage();
+
+    RocketStorage->addRocketComponent("Falcon 9", "Rocket Body", 53);
+    RocketStorage->addRocketComponent("Falcon 9 Core", "Engine", 84);
+    RocketStorage->addRocketComponent("Aerodynamic Components", "Aero", 45);
+    RocketStorage->addRocketComponent("Electronic Components", "Electronic", 49);
+    RocketStorage->addRocketComponent("Crew Dragon","Spacecraft",25);
+
+    for(int i=0; i<35; i++){
+        RocketStorage->addRocketComponent("Merlin", "Engine", 99-i);
+    }
+
+    for(int i=0; i<35; i++){
+        RocketStorage->addRocketComponent("Falcon 9 Core", "Engine", 99-i);
+    }
+
+
+
+    //Main Program
+
+    string act = "a";
+
+    cout<<"\n-------------------------------------------\n";
+
+    cout<<"Welcome to the rocket launch simulator!\n\n";
+
+    cout<<"-------------------------------------------\n";
+
+    sleep(1);
+
+    cout<<"Would you like to change the componets currently in storage, or simulate a launch?\n\n";
+    cout<<"[a] : Change components in storage\t[b] : Simulate a launch\n\n";
+    getline(cin, act);
+
+    if(act == "a"){
+        cout<<"\n-------------------------------------------\n";
+        cout<<"\nYou have chosen to change components in storage\n\n";
+
+        sleep(1);
+
+        string sDec = "a";
+        bool storCon = true;
+
+        while(storCon == true){
+
+            cout<<"\n-------------------------------------------\n\n";
+            cout<<"How would you like to proceed?\n\n";
+            cout<<"[a] Print the components currently in storage\n";
+            cout<<"[b] Add a new rocket component to storage\n";
+            cout<<"[c] Remove a rocket component from storage\n\n";
+            getline(cin,sDec);
+
+            if(sDec == "a"){
+                cout<<"\nYou have chose to print the components currently in storage...\n\n";
+
+                sleep(2);
+
+                cout<<"\n-------------------------------------------\n";
+
+                RocketStorage->printStorage();
+
+                cout<<"\n-------------------------------------------\n\n";
+            }
+            else if(sDec == "b"){
+                string inCType = "";
+                string inCName = "";
+                string inCHealth = "";
+                int iCHealth = 0;
+
+                cout<<"\nYou have chosen to add a component to storage...\n\n";
+
+                cout<<"What type of component would you like to add?\n\n";
+                getline(cin, inCType);
+
+                cout<<"\n\nWhat is the name of the component you would like to add?\n\n";
+                getline(cin, inCName);
+
+                cout<<"\n\nWhat is the health value of the component you would like to add?\n\n";
+                getline(cin, inCHealth);
+
+                iCHealth = stoi(inCHealth);
+
+                cout<<"\nAdding the new component to storage...\n\n";
+
+                RocketStorage->addRocketComponent(inCName,inCType,iCHealth);
+
+                sleep(1);
+
+                cout<<"\nThe component has been added to storage!\n\n";
+
+                cout<<"\n-------------------------------------------\n\n";
+
+            }
+            else if(sDec == "c"){
+
+                string inCType = "";
+                string inCName = "";
+                string inCHealth = "";
+                int iCHealth = 0;
+
+                cout<<"\nYou have chosen to remove a component from storage...\n\n";
+
+                cout<<"What is the type of the component that should be removed?\n\n";
+                getline(cin, inCType);
+
+                cout<<"\n\nWhat is the name of the component that should be removed?\n\n";
+                getline(cin, inCName);
+
+                cout<<"\n\nWhat is the health value of the component that should be removed?\n\n";
+                getline(cin, inCHealth);
+
+                iCHealth = stoi(inCHealth);
+
+                cout<<"\n Removing the component from storage...\n\n";
+
+                RocketStorage->deleteComponent(inCName, inCType, iCHealth);
+
+                sleep(1);
+
+                cout<<"\nThe component has been removed from storage!\n\n";
+
+                cout<<"\n-------------------------------------------\n\n";
+
+            }
+
+            cout<<"Would you like to continue working with the storage?\n\n";
+            cout<<"[a] : Yes\t[b] : No\n\n";
+            getline(cin,sDec);
+
+
+            if(sDec == "a"){
+                storCon = true;
+            }
+            else{
+                storCon = false;
+            }
+
+        }
+
+    }
 
 
 
