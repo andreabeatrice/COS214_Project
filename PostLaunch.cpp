@@ -1,6 +1,7 @@
 #include "PostLaunch.h"
 
 PostLaunchContext::PostLaunchContext(PostLaunchStrategy* strategy){
+    this->strategy = strategy;
 
 }
 
@@ -17,5 +18,5 @@ int SuccessfulRocketStrategy::rocketLaunchCost(){
 /////////////////////////////////////
 
 int FailedRocketStrategy::rocketLaunchCost(){
-    
+
 }
