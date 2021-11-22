@@ -22,13 +22,14 @@ Rocket_Component** StorageFacade::ItemsStored(string name, int count){
 
         }
 
-        cout<<"\nPlease enter the ID of the option you would like to select:\n";
+        cout<<"\nPlease enter the ID of the option you would like to select:\n\n";
         cin>>selection;
+        cin.ignore();
 
         Rocket_Component** returnArr = new Rocket_Component*[1];
         returnArr[0] = this->components[selection];
 
-        cout<<"--------------------------\n\n";
+        cout<<"\n--------------------------\n\n";
 
         return returnArr;
 
@@ -69,11 +70,12 @@ Rocket_Component** StorageFacade::ItemsStored(string name, int count){
             cout<<"ID: "<<i<<"\t"<<name<<"\t"<<tempStorage[i]->getType()<<"\t"<<tempStorage[i]->getHealth()<<"% Health\n";
         }
 
-        cout<<"\nPlease select on of the following options from the list: \n\n";
+        cout<<"\nPlease select one of the following options from the list: \n\n";
         cout<<"[a] : "<<count<<" "<<name<<" engine(s) with the highest health values\n";
-        cout<<"[b] : "<<count<<" "<<name<<" engine(s) with the lowest health values\n";
+        cout<<"[b] : "<<count<<" "<<name<<" engine(s) with the lowest health values\n\n";
 
         cin>>selectC;
+        cin.ignore();
 
         cout<<"--------------------------\n\n";
 

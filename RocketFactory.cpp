@@ -26,13 +26,13 @@ BaseRocket* CreateViableRocket::produceProduct(){
     int nOfFCore = 0;
 
 
-    cout<<"What type of cargo would you like to launch?\n";
-    cout<<"[a] : Satellites, [b] : Supplies, [c] Humans\n";
+    cout<<"What type of cargo would you like to launch?\n\n";
+    cout<<"[a] : Satellites, [b] : Supplies, [c] Humans\n\n";
     cin>>cargo;
     cout<<"\n";
 
-    cout<<"What is the mass of the cargo?\n";
-    cout<<"[a] : <= 22.8 tons , [b] > 22.8 tons\n";
+    cout<<"What is the mass of the cargo?\n\n";
+    cout<<"[a] : <= 22.8 tons , [b] > 22.8 tons\n\n";
     cin>>mass;
     cout<<"\n";
 
@@ -64,11 +64,13 @@ BaseRocket* CreateViableRocket::produceProduct(){
 
         cout<<"The Falcon Heavy Rocket will require 3 Falcon 9 cores.\n\n";
         cout<<"The options currently available in storage are: \n\n";
+        sleep(1);
         FalconCoresC = this->FactoryStorageFacade->ItemsStored("Falcon 9 Core",3);
         nOfFCore = 3;
 
         cout<<"The Falcon Heavy Rocket will require 27 Merlin Engines.\n\n";
         cout<<"The options currently available in storage are: \n\n";
+        sleep(1);
         MerlinC = this->FactoryStorageFacade->ItemsStored("Merlin",27);
         nOfMerlin = 27;
 
@@ -80,12 +82,14 @@ BaseRocket* CreateViableRocket::produceProduct(){
 
         cout<<"The Falcon 9 Rocket will require 1 Falcon 9 core.\n\n";
         cout<<"The options currently available in storage are: \n\n";
+        sleep(1);
         FalconCoresC = this->FactoryStorageFacade->ItemsStored("Falcon 9 Core",1);
 
         nOfFCore = 1;
 
         cout<<"The Falcon 9 Rocket will require 9 Merlin Engines.\n\n";
         cout<<"The options currently available in storage are: \n\n";
+        sleep(1);
         MerlinC = this->FactoryStorageFacade->ItemsStored("Merlin",9);
         nOfMerlin = 9;
 

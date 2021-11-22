@@ -7,6 +7,13 @@
 #include "RocketMemento.h"
 #include "RocketObserver.h"
 
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+//^^For the sleep function
+
 using namespace std;
 
 class BaseRocket;
