@@ -10,6 +10,7 @@
 #include "CommandRoom.h"
 
 #include "Caretaker.h"
+#include "RocketObserver.h"
 
 int main(){
 
@@ -128,6 +129,13 @@ int main(){
     Caretaker* rCaretaker = new Caretaker();
 
     rCaretaker->setMemento(storage[0]->createMemento());
+
+    //Observer
+
+    RocketObserver* nObserver = new RocketObserver(storage[0]);
+    storage[0]->notifyObserver();
+
+
 
    
 

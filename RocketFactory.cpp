@@ -273,6 +273,19 @@ BaseRocket* CreateTestRocket::produceProduct(){
 
 BaseRocket::BaseRocket(){}
 
+void BaseRocket::attachObserver(RocketObserver* observer){
+
+    this->observer = observer;
+
+}
+
+void BaseRocket::notifyObserver(){
+    
+    this->observer->update();
+
+}
+
+
 ///////////////////////////
 
 ViableRocket::ViableRocket(Rocket_Decorator* inRocket, int count){

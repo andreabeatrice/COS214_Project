@@ -5,11 +5,13 @@
 #include "StorageFacade.h"
 #include "Rocket.h"
 #include "RocketMemento.h"
+#include "RocketObserver.h"
 
 using namespace std;
 
 class BaseRocket;
 class RocketMemento;
+class RocketObserver;
 
 class CreateRocket{
     public:
@@ -39,6 +41,7 @@ class CreateTestRocket : public CreateRocket{
 class BaseRocket{
     protected:
         int state;
+        RocketObserver* observer;
 
     public:
         BaseRocket();
@@ -48,6 +51,9 @@ class BaseRocket{
 
         virtual RocketMemento* createMemento() = 0;
         virtual void setState(RocketMemento* memento) = 0;
+
+        void attachObserver(RocketObserver* observer);
+        void notifyObserver();
 
 };
 
