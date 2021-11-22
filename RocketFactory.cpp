@@ -297,9 +297,35 @@ void ViableRocket::Countdown(){
 
 RocketMemento* ViableRocket::createMemento(){
 
+    Rocket_Decorator* myRock = this->myRocket;
+
+    Rocket_Decorator** rocketComponentArray = new Rocket_Decorator*[this->noOfComponents];
+
+    int i = 0;
+
+    int avgHealth = 0;
+
+    myRock->setRocketArr(rocketComponentArray, i);
+
+    for(int i=0; i< this->noOfComponents;i++){
+
+        avgHealth = avgHealth + rocketComponentArray[i]->getHealth();
+
+    }
+
+    avgHealth = avgHealth/this->noOfComponents;
+
+    //cout<<"\nThe average health of the components is: "<<avgHealth;
+
+    this->state = avgHealth;
+
+    return new RocketMemento(avgHealth);
+
 }
 
 void ViableRocket::setState(RocketMemento* memento){
+
+    this->state = memento->getState();
 
 }
 
@@ -326,9 +352,35 @@ void TestRocket::Countdown(){
 
 RocketMemento* TestRocket::createMemento(){
 
+    Rocket_Decorator* myRock = this->myRocket;
+
+    Rocket_Decorator** rocketComponentArray = new Rocket_Decorator*[this->noOfComponents];
+
+    int i = 0;
+
+    int avgHealth = 0;
+
+    myRock->setRocketArr(rocketComponentArray, i);
+
+    for(int i=0; i< this->noOfComponents;i++){
+
+        avgHealth = avgHealth + rocketComponentArray[i]->getHealth();
+
+    }
+
+    avgHealth = avgHealth/this->noOfComponents;
+
+    //cout<<"\nThe average health of the components is: "<<avgHealth;
+
+    this->state = avgHealth;
+
+    return new RocketMemento(avgHealth);
+
 }
 
 void TestRocket::setState(RocketMemento* memento){
+
+    this->state = memento->getState();
 
 }
 

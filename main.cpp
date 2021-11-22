@@ -9,6 +9,8 @@
 #include "TestLaunch.h"
 #include "CommandRoom.h"
 
+#include "Caretaker.h"
+
 int main(){
 
     //Storage Test
@@ -112,12 +114,20 @@ int main(){
         iter->Next();
     }*/
 
-    RealLaunch* rLaunch = new RealLaunch(storage[0]);
+    //Command Launch
+
+    /*RealLaunch* rLaunch = new RealLaunch(storage[0]);
 
     CommandRoom* rCommand = new CommandRoom(rLaunch);
 
-    rCommand->blastOff();
+    rCommand->blastOff();*/
 
+    //Memento
+
+
+    Caretaker* rCaretaker = new Caretaker();
+
+    rCaretaker->setMemento(storage[0]->createMemento());
 
    
 
