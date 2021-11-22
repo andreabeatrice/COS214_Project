@@ -295,6 +295,14 @@ void ViableRocket::Countdown(){
 
 }
 
+RocketMemento* ViableRocket::createMemento(){
+
+}
+
+void ViableRocket::setState(RocketMemento* memento){
+
+}
+
 ///////////////////////////
 
 TestRocket::TestRocket(Rocket_Decorator* inRocket, int count){
@@ -314,6 +322,14 @@ Rocket_Decorator* TestRocket::getRocketComponents(){
 
 void TestRocket::Countdown(){
     cout<<"Test Launch\n";
+}
+
+RocketMemento* TestRocket::createMemento(){
+
+}
+
+void TestRocket::setState(RocketMemento* memento){
+
 }
 
 

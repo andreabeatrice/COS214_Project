@@ -4,10 +4,12 @@
 #include <iostream>
 #include "StorageFacade.h"
 #include "Rocket.h"
+#include "RocketMemento.h"
 
 using namespace std;
 
 class BaseRocket;
+class RocketMemento;
 
 class CreateRocket{
     public:
@@ -35,15 +37,17 @@ class CreateTestRocket : public CreateRocket{
 /////////////////////////
 
 class BaseRocket{
-    /*protected:
-        int id;
-        int total;*/
+    protected:
+        int state;
 
     public:
         BaseRocket();
         virtual int getCount() = 0;
         virtual Rocket_Decorator* getRocketComponents() = 0;
         virtual void Countdown() = 0;
+
+        virtual RocketMemento* createMemento() = 0;
+        virtual void setState(RocketMemento* memento) = 0;
 
 };
 
@@ -58,6 +62,9 @@ class ViableRocket : public BaseRocket{
         Rocket_Decorator* getRocketComponents();
         virtual void Countdown();
 
+        virtual RocketMemento* createMemento();
+        virtual void setState(RocketMemento* memento);
+
 };
 
 class TestRocket : public BaseRocket{
@@ -70,6 +77,9 @@ class TestRocket : public BaseRocket{
         virtual int getCount();
         Rocket_Decorator* getRocketComponents();
         virtual void Countdown();
+
+        virtual RocketMemento* createMemento();
+        virtual void setState(RocketMemento* memento);
 
 };
 
