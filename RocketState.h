@@ -2,10 +2,16 @@
 #define ROCKETSTATE_H
 
 #include "RocketFactory.h"
+#include "PostLaunch.h"
+
+class BaseRocket;
 
 class State{
     public:
         virtual void doAction(BaseRocket* context) = 0;
+    
+    protected:
+        PostLaunchStrategy* PostLaunch;
 
 };
 

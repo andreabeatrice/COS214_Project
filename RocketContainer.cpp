@@ -33,25 +33,25 @@ void RocketContainer::increaseArraySize(){
 
 }
 
-/*void Storage::deleteComponent(string name, string Type, int health){
+void RocketContainer::deleteRocket(BaseRocket* removeRocket){
 
-    Rocket_Component** newArr = new Rocket_Component*[this->size - 1];
+    BaseRocket** newArr = new BaseRocket*[this->ContainerSize - 1];
 
     int j = 0;
 
-    for(int i=0; i<this->size; i++){
+    for(int i=0; i<this->ContainerSize; i++){
 
-        if(this->components[i]->getType()==Type && this->components[i]->getName()==name && this->components[i]->getHealth()==health){
+        if(this->rocketList[i] == removeRocket){
             continue;
         }
         else{
-            newArr[j] = this->components[i];
+            newArr[j] = this->rocketList[i];
             j++;
         }
 
     }
 
-    this->components = newArr;
-    this->size--;
+    this->rocketList = newArr;
+    this->ContainerSize--;
 
-}*/
+}

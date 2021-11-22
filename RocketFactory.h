@@ -7,6 +7,7 @@
 #include "RocketMemento.h"
 #include "RocketObserver.h"
 #include "Caretaker.h"
+#include "RocketState.h"
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -58,7 +59,7 @@ class BaseRocket{
         BaseRocket();
         virtual int getCount() = 0;
         virtual Rocket_Decorator* getRocketComponents() = 0;
-        virtual void Countdown() = 0;
+        virtual int Countdown() = 0;
 
         virtual RocketMemento* createMemento() = 0;
         virtual void setState(RocketMemento* memento) = 0;
@@ -80,7 +81,7 @@ class ViableRocket : public BaseRocket{
         ViableRocket(Rocket_Decorator* inRocket, int count);
         virtual int getCount();
         Rocket_Decorator* getRocketComponents();
-        virtual void Countdown();
+        virtual int Countdown();
 
         virtual RocketMemento* createMemento();
         virtual void setState(RocketMemento* memento);
@@ -96,7 +97,7 @@ class TestRocket : public BaseRocket{
         TestRocket(Rocket_Decorator* inRocket, int count);
         virtual int getCount();
         Rocket_Decorator* getRocketComponents();
-        virtual void Countdown();
+        virtual int Countdown();
 
         virtual RocketMemento* createMemento();
         virtual void setState(RocketMemento* memento);

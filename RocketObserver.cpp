@@ -6,8 +6,22 @@ RocketObserver::RocketObserver(BaseRocket* subject){
 
 }
 
-void RocketObserver::update(){
+void RocketObserver::update(bool LaunchResult){
 
-    cout<<"observer notified!";
+    if(LaunchResult == true){
 
+        this->rocketState = new RocketFailedState();
+
+    }
+    else{
+
+        this->rocketState = new RocketSuccessState();
+
+    }
+
+}
+
+State* RocketObserver::getState(){
+
+    return this->rocketState;
 }

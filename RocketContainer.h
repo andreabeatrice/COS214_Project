@@ -23,6 +23,7 @@ class RocketContainer : public Container{
         void addRocket(BaseRocket* inRocket);
 
         void increaseArraySize();
+        void deleteRocket(BaseRocket* removeRocket);
 
 };
 

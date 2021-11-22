@@ -3,13 +3,20 @@
 void RocketSuccessState::doAction(BaseRocket* context){
 
     cout<<"The Rocket was successful!\n";
-    context->setState(true);
+
+    PostLaunch = new SuccessfulRocketStrategy();
+    PostLaunch->rocketLaunchCost();
+    //context->setState(true);
 
 }
 
 void RocketFailedState::doAction(BaseRocket* context){
 
     cout<<"The Rocket failed\n";
-    context->setState(false);
+
+    PostLaunch = new FailedRocketStrategy();
+    PostLaunch->rocketLaunchCost();
+
+    //context->setState(false);
 
 }

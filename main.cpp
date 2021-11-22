@@ -358,10 +358,27 @@ int main(){
             RocketIterator* iter = launchList->getIterator();
 
             BaseRocket* currentLaunch;
+            State* rocketState;
+
+            int rResul = 0;
 
             while(iter->hasNext()){
                 currentLaunch = iter->Next();
-                currentLaunch->Countdown();
+
+                rResul = currentLaunch->Countdown();
+
+                if(rResul == 1){
+                    /*launchList->deleteRocket(currentLaunch);
+                    iter = launchList->getIterator();*/
+                    continue;
+
+                }
+                else if(rResul == 2){
+
+                    break;
+
+                }
+
             }
 
 

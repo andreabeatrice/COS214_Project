@@ -47,7 +47,7 @@ BaseRocket* CreateViableRocket::produceProduct(){
     else if(cargo=='b'){
         cout<<"The type of cargo specified will require a Dragon Spacecraft.\n\n";
         cout<<"The options currently available in storage are: \n\n";
-        cargoC = this->FactoryStorageFacade->ItemsStored("Crew Dragon",1);
+        cargoC = this->FactoryStorageFacade->ItemsStored("Dragon",1);
 
     }
     else if(cargo=='a'){
@@ -288,7 +288,7 @@ void BaseRocket::attachObserver(RocketObserver* observer){
 
 void BaseRocket::notifyObserver(){
     
-    this->observer->update();
+    this->observer->update(false);
 
 }
 
@@ -321,7 +321,7 @@ Rocket_Decorator* ViableRocket::getRocketComponents(){
     return this->myRocket;
 }
 
-void ViableRocket::Countdown(){
+int ViableRocket::Countdown(){
     cout<<"Initiating Launch Procedure...\n\n";
     sleep(2);
 
@@ -384,8 +384,8 @@ void ViableRocket::Countdown(){
 
     for(int i=0; i<this->getCount();i++){
         compHealth = rocketComponentArray[i]->getHealth();
-        //Calculate a random value from 1 to the health of the component;
-        int randVal = (rand()%(compHealth/2)) + 1;
+        //Calculate a random value from 1 to 99
+        int randVal = (rand()%(70)) + 1;
 
         if(randVal>= compHealth){
             cout<<"The rocket failed the static fire test!\n";
@@ -400,17 +400,29 @@ void ViableRocket::Countdown(){
 
     cout<<"\n-------------------------------------------\n";
 
-    cout<<"\nWould you like to continue to launch? (y/n)\n";
+    cout<<"\nWould you like to continue to launch? (y/n)\n\n";
     string answ = "n";
     getline(cin, answ);
 
     if(answ == "n"){
-        //reset the container **
-        return;
+    
+        string lDec = "";
+        cout<<"\nWould you like to remove the current rocket from your launch list, or cancel all launches?\n\n";
+        cout<<"[a]: Remove current rocket from launch list, [b] Cancel all launches\n\n";
+        getline(cin, lDec);
+        cout<<"--------------------------\n\n";
+
+        if(lDec == "a"){
+            return 1;
+        }
+        else{
+            return 2;
+        }
+
     }
 
     //Do the actual launch
-    cout<<"\n\nPreparing rocket and launch pad for final launch...\n\n";
+    cout<<"\nPreparing rocket and launch pad for final launch...\n\n";
     sleep(2);
 
     cout<<"Rocket launch innitiated!\n\n";
@@ -425,14 +437,14 @@ void ViableRocket::Countdown(){
 
     for(int i=0; i<this->getCount();i++){
         compHealth = rocketComponentArray[i]->getHealth();
-        //Calculate a random value from 1 to half the health of the component
-        int randVal = (rand()%(compHealth/2)) + 1;
+        //Calculate a random value from 1 to 99
+        int randVal = (rand()%(70)) + 1;
         rocketComponentArray[i]->setHealth(compHealth-randVal);
         compHealth = rocketComponentArray[i]->getHealth();
 
         if(compHealth<=0){
-            cout<<"The rocket failed during the launch!\n";
-            cout<<"Component "<<rocketComponentArray[i]->getType()<< " failed during the launch. \n";
+            cout<<"The rocket failed during the launch! All of the components used were lost\n";
+            cout<<"Component "<<rocketComponentArray[i]->getType()<< " failed during the launch. \n\n";
             rocketFail = true;
             break;
         }
@@ -443,13 +455,21 @@ void ViableRocket::Countdown(){
     if(rocketFail == true){
         //RocketObserver->notify("fail");
         //notify observer
-        cout<<"Rocket Failed\n\n";
+        nObserver->update(true);
     }
     else{
         //Could also add, "Humands docked at ISS" or "Satelites successfully launched depending on the type of cargo"
         //notify observer
-        cout<<"The rocket successfully launched and its components were recovered!\n";
+        nObserver->update(false);
+        cout<<"The rocket successfully launched and its components were recovered!\n\n";
     }
+
+    State* rState = nObserver->getState();
+    rState->doAction(this);
+
+    cout<<"--------------------------\n\n";
+
+    return 0;
 
 }
 
@@ -504,7 +524,7 @@ Rocket_Decorator* TestRocket::getRocketComponents(){
     return this->myRocket;
 }
 
-void TestRocket::Countdown(){
+int TestRocket::Countdown(){
     cout<<"Test Launch\n";
 }
 

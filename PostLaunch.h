@@ -1,7 +1,7 @@
 #ifndef POSTLAUNCH_H
 #define POSTLAUNCH_H
 
-class PostLaunchStrategy;
+/*class PostLaunchStrategy;
 
 class PostLaunchContext{
     private:
@@ -11,7 +11,11 @@ class PostLaunchContext{
         PostLaunchContext(PostLaunchStrategy* strategy);
         int launchCost();
 
-};
+};*/
+
+#include <iostream>
+
+using namespace std;
 
 class PostLaunchStrategy{
     public:
