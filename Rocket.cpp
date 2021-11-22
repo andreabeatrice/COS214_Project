@@ -76,6 +76,7 @@ void Rocket_Component_Decorator::setRocketArr(Rocket_Decorator** inRocket, int i
 Engine_Decorator::Engine_Decorator(string name, int health){
     setName(name);
     setHealth(health);
+    setType("Engine");
 
 }
 
@@ -84,6 +85,7 @@ Engine_Decorator::Engine_Decorator(string name, int health){
 Aero_Decorator::Aero_Decorator(string name, int health){
     setName(name);
     setHealth(health);
+    setType("Aero");
     
 }
 
@@ -92,6 +94,7 @@ Aero_Decorator::Aero_Decorator(string name, int health){
 Electronic_Decorator::Electronic_Decorator(string name, int health){
     setName(name);
     setHealth(health);
+    setType("Electronic");
     
 }
 
@@ -100,6 +103,7 @@ Electronic_Decorator::Electronic_Decorator(string name, int health){
 RocketBody_Decorator::RocketBody_Decorator(string name, int health){
     setName(name);
     setHealth(health);
+    setType("Rocket Body");
     
 }
 
@@ -108,6 +112,7 @@ RocketBody_Decorator::RocketBody_Decorator(string name, int health){
 Spacecraft_Decorator::Spacecraft_Decorator(string name, int health){
     setName(name);
     setHealth(health);
+    setType("Spacecraft");
     
 }
 

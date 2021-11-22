@@ -6,6 +6,7 @@
 #include "Rocket.h"
 #include "RocketMemento.h"
 #include "RocketObserver.h"
+#include "Caretaker.h"
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -13,6 +14,8 @@
 #include <unistd.h>
 #endif
 //^^For the sleep function
+#include <cstdlib>
+//To generate random number
 
 using namespace std;
 

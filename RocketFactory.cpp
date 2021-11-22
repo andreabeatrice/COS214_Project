@@ -322,7 +322,134 @@ Rocket_Decorator* ViableRocket::getRocketComponents(){
 }
 
 void ViableRocket::Countdown(){
-    cout<<"Real Launch \n";
+    cout<<"Initiating Launch Procedure...\n\n";
+    sleep(2);
+
+    //Array of the components of the rocket
+
+    Rocket_Decorator* myRock = this->getRocketComponents();
+
+    Rocket_Decorator** rocketComponentArray = new Rocket_Decorator*[this->getCount()];
+
+    int i = 0;
+
+    myRock->setRocketArr(rocketComponentArray, i);
+
+    //Calculate the average health of all of the components
+
+    double avgHealth = 0;
+
+    for(int j = 0; j < 4 ; j++){
+        avgHealth = avgHealth + rocketComponentArray[j]->getHealth();
+    }
+
+    avgHealth = avgHealth / 4;
+
+    //Provide a description of the rocket being launched
+
+    cout<<"Description of all components used by the rocket currently being launched: \n";
+    cout<<"\n-------------------------------------------\n";
+
+
+    for(int i=0; i< this->getCount();i++){
+
+        cout<<"Name: "<<rocketComponentArray[i]->getName()<<"\t"<<"Health: "<<rocketComponentArray[i]->getHealth()<<"\n";
+
+    }
+    cout<<"\n-------------------------------------------\n";
+
+    cout<<"The overall health value for this rocket is: "<<avgHealth<<"\n\n";
+
+
+    //Create a memento of the rocket and attach observer
+
+    Caretaker* rCaretaker = new Caretaker();
+
+    rCaretaker->setMemento(this->createMemento());
+
+    RocketObserver* nObserver = new RocketObserver(this);
+
+    //this->notifyObserver();
+
+    //Static fire test
+	
+	cout<<"Preparing rocket and launch pad...\n\n";
+    sleep(2);
+	
+	cout<<"Static fire test innitiated!\n\n";
+    sleep(1);
+
+    int randVal = 0;
+    int compHealth = 0;
+
+    for(int i=0; i<this->getCount();i++){
+        compHealth = rocketComponentArray[i]->getHealth();
+        //Calculate a random value from 1 to the health of the component;
+        int randVal = (rand()%(compHealth/2)) + 1;
+
+        if(randVal>= compHealth){
+            cout<<"The rocket failed the static fire test!\n";
+            cout<<"Component "<<rocketComponentArray[i]->getType()<< " failed during the test. \n";
+            break;
+        }
+        else{
+            cout<<"Component "<<rocketComponentArray[i]->getType()<<" passed the static fire test!\n";
+        }
+        
+    }
+
+    cout<<"\n-------------------------------------------\n";
+
+    cout<<"\nWould you like to continue to launch? (y/n)\n";
+    string answ = "n";
+    getline(cin, answ);
+
+    if(answ == "n"){
+        //reset the container **
+        return;
+    }
+
+    //Do the actual launch
+    cout<<"\n\nPreparing rocket and launch pad for final launch...\n\n";
+    sleep(2);
+
+    cout<<"Rocket launch innitiated!\n\n";
+    sleep(1);
+
+    randVal = 0;
+    compHealth = 0;
+    bool rocketFail = false;
+
+    cout<<"The rocket is currently launching...\n\n";
+    sleep(5);
+
+    for(int i=0; i<this->getCount();i++){
+        compHealth = rocketComponentArray[i]->getHealth();
+        //Calculate a random value from 1 to half the health of the component
+        int randVal = (rand()%(compHealth/2)) + 1;
+        rocketComponentArray[i]->setHealth(compHealth-randVal);
+        compHealth = rocketComponentArray[i]->getHealth();
+
+        if(compHealth<=0){
+            cout<<"The rocket failed during the launch!\n";
+            cout<<"Component "<<rocketComponentArray[i]->getType()<< " failed during the launch. \n";
+            rocketFail = true;
+            break;
+        }
+
+        
+    }
+
+    if(rocketFail == true){
+        //RocketObserver->notify("fail");
+        //notify observer
+        cout<<"Rocket Failed\n\n";
+    }
+    else{
+        //Could also add, "Humands docked at ISS" or "Satelites successfully launched depending on the type of cargo"
+        //notify observer
+        cout<<"The rocket successfully launched and its components were recovered!\n";
+    }
 
 }
 

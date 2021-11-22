@@ -3,6 +3,8 @@
 
 #include "RocketMemento.h"
 
+class RocketMemento;
+
 class Caretaker {
 	private:
 		RocketMemento* mem;
