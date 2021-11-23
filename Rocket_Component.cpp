@@ -43,7 +43,7 @@ Aero::Aero(string name, int health){
 
     this->name = name;
     this->health = health;
-    this->type = "Aerodynamics";
+    this->type = "Aero";
 
 }
 

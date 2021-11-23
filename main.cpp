@@ -276,7 +276,7 @@ int main(){
 
                 }
 
-                cout<<"Would you like to continue working with the storage?\n\n";
+                cout<<"Would you like to continue using the storage?\n\n";
                 cout<<"[a] : Yes\t[b] : No\n\n";
                 getline(cin,sDec);
 
@@ -386,7 +386,7 @@ int main(){
 
         }
 
-        cout<<"\nWould you like to continue working with the program?\n\n";
+        cout<<"\nWould you like to continue using the program?\n\n";
         cout<<"[a] : Yes\t[b] : No\n\n";
         getline(cin, act);
 

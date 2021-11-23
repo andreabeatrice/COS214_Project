@@ -1,6 +1,14 @@
 #ifndef POSTLAUNCH_H
 #define POSTLAUNCH_H
 
+#include "RocketFactory.h"
+#include "Caretaker.h"
+#include "Rocket.h"
+#include "Storage.h"
+
+class BaseRocket;
+class Caretaker;
+
 /*class PostLaunchStrategy;
 
 class PostLaunchContext{
@@ -19,19 +27,19 @@ using namespace std;
 
 class PostLaunchStrategy{
     public:
-        virtual int rocketLaunchCost() = 0;
+        virtual int rocketLaunchCost(BaseRocket* context,  Caretaker* caretaker) = 0;
 
 };
 
 class SuccessfulRocketStrategy : public PostLaunchStrategy{
     public:
-        virtual int rocketLaunchCost();
+        virtual int rocketLaunchCost(BaseRocket* context,  Caretaker* caretaker);
 
 };
 
 class FailedRocketStrategy : public PostLaunchStrategy{
     public:
-        virtual int rocketLaunchCost();
+        virtual int rocketLaunchCost(BaseRocket* context,  Caretaker* caretaker);
 
 };
 

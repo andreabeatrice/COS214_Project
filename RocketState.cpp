@@ -1,21 +1,21 @@
 #include "RocketState.h"
 
-void RocketSuccessState::doAction(BaseRocket* context){
+void RocketSuccessState::doAction(BaseRocket* context, Caretaker* caretaker){
 
-    cout<<"The Rocket was successful!\n";
+    //cout<<"The Rocket was successful!\n";
 
     PostLaunch = new SuccessfulRocketStrategy();
-    PostLaunch->rocketLaunchCost();
+    PostLaunch->rocketLaunchCost(context, caretaker);
     //context->setState(true);
 
 }
 
-void RocketFailedState::doAction(BaseRocket* context){
+void RocketFailedState::doAction(BaseRocket* context, Caretaker* caretaker){
 
-    cout<<"The Rocket failed\n";
+    //cout<<"The Rocket failed\n";
 
     PostLaunch = new FailedRocketStrategy();
-    PostLaunch->rocketLaunchCost();
+    PostLaunch->rocketLaunchCost(context, caretaker);
 
     //context->setState(false);
 

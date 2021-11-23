@@ -5,6 +5,11 @@ StorageFacade::StorageFacade(Storage* inRocketStore){
 
 }
 
+Storage* StorageFacade::getStorage(){
+
+    return this->RocketStore;
+}
+
 Rocket_Component** StorageFacade::ItemsStored(string name, int count){
     
     int totalItems = RocketStore->totalItems();

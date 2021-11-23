@@ -123,9 +123,26 @@ BaseRocket* CreateViableRocket::produceProduct(){
     myRocket->add(new Spacecraft_Decorator(cargoC[0]->getName(), cargoC[0]->getHealth()));
 
     int count = nOfFCore + nOfMerlin + 4;
+
+    Storage* delFromStorage = this->FactoryStorageFacade->getStorage();
+
+    //delete components used for rocket from storage
+
+    Rocket_Decorator** rocketComponentArray = new Rocket_Decorator*[count];
+
+
+    int i = 0;
+
+    myRocket->setRocketArr(rocketComponentArray, i);
+
+    for(int i=0; i< count;i++){
+
+        delFromStorage->deleteComponent(rocketComponentArray[i]->getName(), rocketComponentArray[i]->getType(), rocketComponentArray[i]->getHealth());
+
+    }
     
 
-    return new ViableRocket(myRocket, count);
+    return new ViableRocket(myRocket, count, this->FactoryStorageFacade);
 
 }
 
@@ -269,7 +286,7 @@ BaseRocket* CreateTestRocket::produceProduct(){
     int count = nOfFCore + nOfMerlin + 4;
     
 
-    return new TestRocket(myRocket, count);
+    return new TestRocket(myRocket, count, this->FactoryStorageFacade);
 
 }
 
@@ -303,12 +320,23 @@ bool BaseRocket::getState(){
     return this->stateContext;
 }
 
+int BaseRocket::getStateInt(){
+
+    return this->state;
+}
+
+Storage* BaseRocket::getStorage(){
+
+    return this->FactoryStorageFacade->getStorage();
+}
+
 
 ///////////////////////////
 
-ViableRocket::ViableRocket(Rocket_Decorator* inRocket, int count){
+ViableRocket::ViableRocket(Rocket_Decorator* inRocket, int count, StorageFacade* sFacade){
     this->myRocket = inRocket;
     this->noOfComponents = count;
+    this->FactoryStorageFacade = sFacade;
 
 }
 
@@ -339,11 +367,11 @@ int ViableRocket::Countdown(){
 
     double avgHealth = 0;
 
-    for(int j = 0; j < 4 ; j++){
+    for(int j = 0; j < this->getCount() ; j++){
         avgHealth = avgHealth + rocketComponentArray[j]->getHealth();
     }
 
-    avgHealth = avgHealth / 4;
+    avgHealth = avgHealth / this->getCount();
 
     //Provide a description of the rocket being launched
 
@@ -376,7 +404,7 @@ int ViableRocket::Countdown(){
 	cout<<"Preparing rocket and launch pad...\n\n";
     sleep(2);
 	
-	cout<<"Static fire test innitiated!\n\n";
+	cout<<"Static fire test initiated!\n\n";
     sleep(1);
 
     int randVal = 0;
@@ -425,7 +453,7 @@ int ViableRocket::Countdown(){
     cout<<"\nPreparing rocket and launch pad for final launch...\n\n";
     sleep(2);
 
-    cout<<"Rocket launch innitiated!\n\n";
+    cout<<"Rocket launch initiated!\n\n";
     sleep(1);
 
     randVal = 0;
@@ -433,7 +461,7 @@ int ViableRocket::Countdown(){
     bool rocketFail = false;
 
     cout<<"The rocket is currently launching...\n\n";
-    sleep(5);
+    sleep(4);
 
     for(int i=0; i<this->getCount();i++){
         compHealth = rocketComponentArray[i]->getHealth();
@@ -465,7 +493,7 @@ int ViableRocket::Countdown(){
     }
 
     State* rState = nObserver->getState();
-    rState->doAction(this);
+    rState->doAction(this, rCaretaker);
 
     cout<<"--------------------------\n\n";
 
@@ -509,9 +537,10 @@ void ViableRocket::setState(RocketMemento* memento){
 
 ///////////////////////////
 
-TestRocket::TestRocket(Rocket_Decorator* inRocket, int count){
+TestRocket::TestRocket(Rocket_Decorator* inRocket, int count, StorageFacade* sFacade){
     this->myRocket = inRocket;
     this->noOfComponents = count;
+    this->FactoryStorageFacade = sFacade;
 
 }
 

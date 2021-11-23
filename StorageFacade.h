@@ -12,6 +12,7 @@ class StorageFacade{
         StorageFacade(Storage* inRocketStore);
         Rocket_Component** ItemsStored(string name, int count);
         void bubbleSort(Rocket_Component** inArr, int size);
+        Storage* getStorage();
 
 };
 

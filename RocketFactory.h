@@ -54,6 +54,7 @@ class BaseRocket{
         int state;
         RocketObserver* observer;
         bool stateContext;
+        StorageFacade* FactoryStorageFacade;
 
     public:
         BaseRocket();
@@ -70,6 +71,11 @@ class BaseRocket{
         void setState(bool state);
         bool getState();
 
+        int getStateInt();
+
+        Storage* getStorage();
+
+
 };
 
 class ViableRocket : public BaseRocket{
@@ -78,7 +84,7 @@ class ViableRocket : public BaseRocket{
         int noOfComponents;
 
     public:
-        ViableRocket(Rocket_Decorator* inRocket, int count);
+        ViableRocket(Rocket_Decorator* inRocket, int count, StorageFacade* sFacade);
         virtual int getCount();
         Rocket_Decorator* getRocketComponents();
         virtual int Countdown();
@@ -94,7 +100,7 @@ class TestRocket : public BaseRocket{
         int noOfComponents;
 
     public:
-        TestRocket(Rocket_Decorator* inRocket, int count);
+        TestRocket(Rocket_Decorator* inRocket, int count, StorageFacade* sFacade);
         virtual int getCount();
         Rocket_Decorator* getRocketComponents();
         virtual int Countdown();

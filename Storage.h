@@ -12,6 +12,7 @@ class Storage{
     private:
         Rocket_Component** components;
         int size;
+        Rocket_Component** protoComponents;
 
     public:
         Storage();
