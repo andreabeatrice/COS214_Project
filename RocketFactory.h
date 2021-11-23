@@ -61,20 +61,14 @@ class BaseRocket{
         virtual int getCount() = 0;
         virtual Rocket_Decorator* getRocketComponents() = 0;
         virtual int Countdown() = 0;
-
         virtual RocketMemento* createMemento() = 0;
         virtual void setState(RocketMemento* memento) = 0;
-
         void attachObserver(RocketObserver* observer);
         void notifyObserver();
-        
         void setState(bool state);
         bool getState();
-
         int getStateInt();
-
         Storage* getStorage();
-
 
 };
 

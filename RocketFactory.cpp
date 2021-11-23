@@ -51,9 +51,9 @@ BaseRocket* CreateViableRocket::produceProduct(){
 
     }
     else if(cargo=='a'){
-        cout<<"The type of cargo specified will not require a spacecraft.\n\n";
-        cout<<"--------------------------\n\n";
-        cargoC = NULL;
+        cout<<"The type of cargo specified will require a Dragon Spacecraft.\n\n";
+        cout<<"The options currently available in storage are: \n\n";
+        cargoC = this->FactoryStorageFacade->ItemsStored("Dragon",1);
 
     }
 
@@ -169,22 +169,25 @@ BaseRocket* CreateTestRocket::produceProduct(){
     int nOfFCore = 0;
 
 
-    cout<<"What type of cargo would you like to launch?\n";
-    cout<<"[a] : Satellites, [b] : Supplies, [c] Humans\n";
+    cout<<"What type of cargo would you like to launch?\n\n";
+    cout<<"[a] : Satellites, [b] : Supplies, [c] Humans\n\n";
     cin>>cargo;
+    cin.ignore();
     cout<<"\n";
 
-    cout<<"What is the mass of the cargo?\n";
-    cout<<"[a] : <= 22.8 tons , [b] > 22.8 tons\n";
+    cout<<"What is the mass of the cargo?\n\n";
+    cout<<"[a] : <= 22.8 tons , [b] > 22.8 tons\n\n";
     cin>>mass;
+    cin.ignore();
     cout<<"\n";
 
     cout<<"--------------------------\n\n";
 
     if(cargo=='c'){
         cout<<"The type of cargo specified will require a Crew Dragon Spacecraft.\n\n";
-        cout<<"Please enter a health value for the spacecraft:\n";
+        cout<<"Please enter a health value for the spacecraft:\n\n";
         cin>>spacecraftHealth;
+        cin.ignore();
         cout<<"\n";
         spacecraftName = "Crew Dragon";
         cout<<"--------------------------\n\n";        
@@ -192,36 +195,45 @@ BaseRocket* CreateTestRocket::produceProduct(){
     }
     else if(cargo=='b'){
         cout<<"The type of cargo specified will require a Dragon Spacecraft.\n\n";
-        cout<<"Please enter a health value for the spacecraft:\n";
+        cout<<"Please enter a health value for the spacecraft:\n\n";
         cin>>spacecraftHealth;
+        cin.ignore();
         cout<<"\n";
         spacecraftName = "Dragon";
         cout<<"--------------------------\n\n";
 
     }
     else if(cargo=='a'){
-        cout<<"The type of cargo specified will not require a spacecraft.\n\n";
+        cout<<"The type of cargo specified will require a Dragon Spacecraft.\n\n";
+        cout<<"Please enter a health value for the spacecraft:\n\n";
+        cin>>spacecraftHealth;
+        cin.ignore();
+        cout<<"\n";
+        spacecraftName = "Dragon";
         cout<<"--------------------------\n\n";
 
     }
 
     if(mass=='b'){
         cout<<"The mass of the cargo specified will require a Falcon Heavy Rocket.\n\n";
-        cout<<"Please enter a health value for the rocket body:\n";
+        cout<<"Please enter a health value for the rocket body:\n\n";
         cin>>rocketHealth;
+        cin.ignore();
         cout<<"\n";
         rocketName = "Falcon Heavy";
 
         cout<<"The Falcon Heavy Rocket will require 3 Falcon 9 cores.\n\n";
-        cout<<"Please enter a health value for the Falcon 9 cores:\n";
+        cout<<"Please enter a health value for the Falcon 9 cores:\n\n";
         cin>>falconCoreHealth;
+        cin.ignore();
         cout<<"\n";
     
         nOfFCore = 3;
 
         cout<<"The Falcon Heavy Rocket will require 27 Merlin Engines.\n\n";
-        cout<<"Please enter a health value for the Merlin Engines:\n";
+        cout<<"Please enter a health value for the Merlin Engines:\n\n";
         cin>>merlinHealth;
+        cin.ignore();
         cout<<"\n";
     
         nOfMerlin = 27;
@@ -230,21 +242,24 @@ BaseRocket* CreateTestRocket::produceProduct(){
     }
     else if(mass=='a'){
         cout<<"The mass of the cargo specified will require a Falcon 9 Rocket.\n\n";
-        cout<<"Please enter a health value for the rocket body:\n";
+        cout<<"Please enter a health value for the rocket body:\n\n";
         cin>>rocketHealth;
+        cin.ignore();
         cout<<"\n";
         rocketName = "Falcon 9";
 
         cout<<"The Falcon 9 Rocket will require 1 Falcon 9 core.\n\n";
-        cout<<"Please enter a health value for the Falcon 9 core:\n";
+        cout<<"Please enter a health value for the Falcon 9 core:\n\n";
         cin>>falconCoreHealth;
+        cin.ignore();
         cout<<"\n";
 
         nOfFCore = 1;
 
         cout<<"The Falcon 9 Rocket will require 9 Merlin Engines.\n\n";
-        cout<<"Please enter a health value for the Merlin Engines:\n";
+        cout<<"Please enter a health value for the Merlin Engines:\n\n";
         cin>>merlinHealth;
+        cin.ignore();
         cout<<"\n";
 
         nOfMerlin = 9;
@@ -253,14 +268,16 @@ BaseRocket* CreateTestRocket::produceProduct(){
     }
 
     cout<<"The rocket will require aerodynamic components.\n\n";
-    cout<<"Please enter a health value for the aerodynamic components:\n";
+    cout<<"Please enter a health value for the aerodynamic components:\n\n";
     cin>>aeroHealth;
+    cin.ignore();
     cout<<"\n";
     cout<<"--------------------------\n\n";
 
     cout<<"The rocket will require electronic components.\n\n";
     cout<<"Please enter a health value for the electronic components:\n\n";
     cin>>electricHealth;
+    cin.ignore();
     cout<<"\n";
     cout<<"--------------------------\n\n";
 
@@ -397,8 +414,6 @@ int ViableRocket::Countdown(){
 
     RocketObserver* nObserver = new RocketObserver(this);
 
-    //this->notifyObserver();
-
     //Static fire test
 	
 	cout<<"Preparing rocket and launch pad...\n\n";
@@ -481,13 +496,9 @@ int ViableRocket::Countdown(){
     }
 
     if(rocketFail == true){
-        //RocketObserver->notify("fail");
-        //notify observer
         nObserver->update(true);
     }
     else{
-        //Could also add, "Humands docked at ISS" or "Satelites successfully launched depending on the type of cargo"
-        //notify observer
         nObserver->update(false);
         cout<<"The rocket successfully launched and its components were recovered!\n\n";
     }
@@ -554,7 +565,144 @@ Rocket_Decorator* TestRocket::getRocketComponents(){
 }
 
 int TestRocket::Countdown(){
-    cout<<"Test Launch\n";
+    
+    cout<<"Initiating Test Launch Procedure...\n\n";
+    sleep(2);
+
+    //Array of the components of the rocket
+
+    Rocket_Decorator* myRock = this->getRocketComponents();
+
+    Rocket_Decorator** rocketComponentArray = new Rocket_Decorator*[this->getCount()];
+
+    int i = 0;
+
+    myRock->setRocketArr(rocketComponentArray, i);
+
+    //Calculate the average health of all of the components
+
+    double avgHealth = 0;
+
+    for(int j = 0; j < this->getCount() ; j++){
+        avgHealth = avgHealth + rocketComponentArray[j]->getHealth();
+    }
+
+    avgHealth = avgHealth / this->getCount();
+
+    //Provide a description of the rocket being launched
+
+    cout<<"Description of all components used by the rocket currently being launched: \n";
+    cout<<"\n-------------------------------------------\n";
+
+
+    for(int i=0; i< this->getCount();i++){
+
+        cout<<"Name: "<<rocketComponentArray[i]->getName()<<"\t"<<"Health: "<<rocketComponentArray[i]->getHealth()<<"\n";
+
+    }
+    cout<<"\n-------------------------------------------\n";
+
+    cout<<"The overall health value for this rocket is: "<<avgHealth<<"\n\n";
+	
+	cout<<"Preparing rocket and launch pad...\n\n";
+    sleep(2);
+	
+	cout<<"Static fire test initiated!\n\n";
+    sleep(1);
+
+    int randVal = 0;
+    int compHealth = 0;
+
+    for(int i=0; i<this->getCount();i++){
+        compHealth = rocketComponentArray[i]->getHealth();
+        //Calculate a random value from 1 to 99
+        int randVal = (rand()%(70)) + 1;
+
+        if(randVal>= compHealth){
+            cout<<"The rocket failed the static fire test!\n";
+            cout<<"Component "<<rocketComponentArray[i]->getType()<< " failed during the test. \n";
+            break;
+        }
+        else{
+            cout<<"Component "<<rocketComponentArray[i]->getType()<<" passed the static fire test!\n";
+        }
+        
+    }
+
+    cout<<"\n-------------------------------------------\n";
+
+    cout<<"\nWould you like to continue to launch? (y/n)\n\n";
+    string answ = "n";
+    getline(cin, answ);
+
+    if(answ == "n"){
+    
+        string lDec = "";
+        cout<<"\nWould you like to remove the current rocket from your launch list, or cancel all launches?\n\n";
+        cout<<"[a]: Remove current rocket from launch list, [b] Cancel all launches\n\n";
+        getline(cin, lDec);
+        cout<<"--------------------------\n\n";
+
+        if(lDec == "a"){
+            return 3;
+        }
+        else{
+            return 4;
+        }
+
+    }
+
+    //Do the actual launch
+    cout<<"\nPreparing test rocket and launch pad for final launch...\n\n";
+    sleep(2);
+
+    cout<<"Test Rocket launch initiated!\n\n";
+    sleep(1);
+
+    randVal = 0;
+    compHealth = 0;
+    bool rocketFail = false;
+
+    cout<<"The rocket is currently launching...\n\n";
+    sleep(4);
+
+    for(int i=0; i<this->getCount();i++){
+        compHealth = rocketComponentArray[i]->getHealth();
+        //Calculate a random value from 1 to 99
+        int randVal = (rand()%(70)) + 1;
+        rocketComponentArray[i]->setHealth(compHealth-randVal);
+        compHealth = rocketComponentArray[i]->getHealth();
+
+        if(compHealth<=0){
+            cout<<"The test rocket failed during the launch!";
+            cout<<"Component "<<rocketComponentArray[i]->getType()<< " failed during the launch. \n\n";
+            rocketFail = true;
+
+            string rAnsw = "";
+            cout<<"Would you like to restart the launch procedure on this rocket? (y/n)\n\n";
+            getline(cin, rAnsw);
+
+            if(rAnsw=="y"){
+                this->Countdown();
+                return 0;
+            }
+
+            break;
+        }
+
+        
+    }
+
+    if(rocketFail == false){
+
+        cout<<"The rocket successfully launched!\n\n";
+
+    }
+
+
+    cout<<"--------------------------\n\n";
+
+    return 0;
 }
 
 RocketMemento* TestRocket::createMemento(){
@@ -576,8 +724,6 @@ RocketMemento* TestRocket::createMemento(){
     }
 
     avgHealth = avgHealth/this->noOfComponents;
-
-    //cout<<"\nThe average health of the components is: "<<avgHealth;
 
     this->state = avgHealth;
 

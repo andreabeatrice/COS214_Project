@@ -21,4 +21,6 @@ BaseRocket* RocketIterator::Next(){
         return this->rocketList[index-1];
     }
 
+    return NULL;
+
 }

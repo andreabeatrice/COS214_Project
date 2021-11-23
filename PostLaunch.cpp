@@ -1,17 +1,6 @@
 #include "PostLaunch.h"
 #include <iomanip>
 
-/*PostLaunchContext::PostLaunchContext(PostLaunchStrategy* strategy){
-    this->strategy = strategy;
-
-}
-
-int PostLaunchContext::launchCost(){
-
-}*/
-
-/////////////////////////////////////
-
 //Price of engines
 const int MerlinP = 10;
 const int Falc9CoreP = 20;
@@ -107,8 +96,6 @@ int SuccessfulRocketStrategy::rocketLaunchCost(BaseRocket* context, Caretaker* c
 
     avgHealth = avgHealth/context->getCount();
 
-    //cout<<"Success Strat "<<avgHealth;
-
     cout<<"--------------------------\n\n";
 
     cout<<"The overall health of the rocket before the launch = "<<or_avgHealth<<"\n\n";
@@ -127,8 +114,7 @@ int SuccessfulRocketStrategy::rocketLaunchCost(BaseRocket* context, Caretaker* c
     }
     while (cin.get() != '\n');
 
-
-    
+    return 0;    
 
 }
 
@@ -142,8 +128,6 @@ int FailedRocketStrategy::rocketLaunchCost(BaseRocket* context, Caretaker* caret
 
     cout<<"--------------------------\n\n";
     cout<<"The components that were destroyed during the launch are the following:\n\n";
-
-    //cout<<"Success Strat "<<or_avgHealth;
 
     Rocket_Decorator* doneRocket = context->getRocketComponents();
 
@@ -209,8 +193,8 @@ int FailedRocketStrategy::rocketLaunchCost(BaseRocket* context, Caretaker* caret
 
     cout<<"The overall health of the rocket before the launch = "<<or_avgHealth<<"\n\n";
 
-    cout<<"The rocket was totally destroyed during the launch \n";
-    cout<<"Therefore, the cost of the launch will be the cost of all of the destroyed components\n\n"
+    cout<<"The rocket was totally destroyed during the launch\n";
+    cout<<"Therefore, the cost of the launch will be the cost of all of the destroyed components\n\n";
 
     cout<<"We can determine that the launch had a cost of R"<<lCost<<" million\n\n";
 
@@ -218,5 +202,7 @@ int FailedRocketStrategy::rocketLaunchCost(BaseRocket* context, Caretaker* caret
         cout<< "Press enter to continue...\n";
     }
     while (cin.get() != '\n');
+
+    return 0;
 
 }

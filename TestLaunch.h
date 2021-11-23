@@ -16,7 +16,7 @@ class TestLaunch : public Launch {
 		//Initialise the variable to launch
 		TestLaunch(BaseRocket* r);
 		~TestLaunch();
-		virtual void execute();
+		virtual int execute();
 };
 
 #endif

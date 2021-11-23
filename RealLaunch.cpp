@@ -10,7 +10,7 @@ RealLaunch::~RealLaunch()
 	delete rocket;
 }
 
-void RealLaunch::execute()
+int RealLaunch::execute()
 {
-	rocket->Countdown();//Function in rocket that will allow the rocket to blast off fro real
+	return rocket->Countdown();//Function in rocket that will allow the rocket to blast off fro real
 }

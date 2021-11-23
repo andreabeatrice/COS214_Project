@@ -10,7 +10,7 @@ CommandRoom::~CommandRoom()
 	delete launch;
 }
 
-void CommandRoom::blastOff()
+int CommandRoom::blastOff()
 {
-	launch->execute();
+	return launch->execute();
 }

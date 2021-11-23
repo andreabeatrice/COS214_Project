@@ -14,7 +14,7 @@ class CommandRoom {
 		CommandRoom(Launch*);
 		~CommandRoom();
 		//Call execute command
-		void blastOff();
+		int blastOff();
 };
 
 #endif

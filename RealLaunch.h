@@ -14,7 +14,7 @@ class RealLaunch : public Launch {
 		//Initialise the variable to launch
 		RealLaunch(BaseRocket* r);
 		~RealLaunch();
-		virtual void execute();
+		virtual int execute();
 };
 
 #endif

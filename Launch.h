@@ -9,7 +9,7 @@ using namespace std;
 class Launch {
 	public:
 		//Function to call the rocket function to launch
-		virtual void execute() = 0;
+		virtual int execute() = 0;
 };
 
 #endif

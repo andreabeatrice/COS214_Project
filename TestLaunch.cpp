@@ -10,7 +10,7 @@ TestLaunch::~TestLaunch()
 	delete rocket;
 }
 
-void TestLaunch::execute()
+int TestLaunch::execute()
 {
-	rocket->Countdown();//Function in rocket that will allow the rocket to blast off as simulation
+	return rocket->Countdown();//Function in rocket that will allow the rocket to blast off as simulation
 }
